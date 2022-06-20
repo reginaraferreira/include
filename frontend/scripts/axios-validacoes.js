@@ -11,7 +11,7 @@ function fazerLogin(){
     var email = emailField.value;
     var senha = passwordField.value;
 
-    axios.post("https://social-backend-tcc.herokuapp.com/auth/login/",{
+    axios.post("http://localhost:4000/auth",{
         email,
         senha
     }).then(res =>{

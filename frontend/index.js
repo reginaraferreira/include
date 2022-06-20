@@ -9,21 +9,21 @@ app.use("/scripts", express.static('scripts'));
 
 app.use(cors());
 
-var corsOptions = {
-    origin: 'https://social-backend-tcc.herokuapp.com/',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
+//var corsOptions = {
+//    origin: 'https://social-backend-tcc.herokuapp.com/',
+ //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+ // }
 
 
-app.get('/', function(req, res){
+app.get('/',cors(), function(req, res){
     res.render('login',);
 });
 
-app.get('/cadastro', cors(corsOptions), function(req, res){
+app.get('/cadastro', cors(), function(req, res){
     res.render('cadastro');
 });
 
-app.get('/cadastro-realizado', cors(corsOptions), function(req, res){
+app.get('/cadastro-realizado', cors(), function(req, res){
     res.render('cadastro-realizado');
 });
 
