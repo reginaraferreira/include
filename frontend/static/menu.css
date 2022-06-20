@@ -32,13 +32,14 @@ a:hover{
 	width: 50px;
 	float: left;
 	margin-left: 40px;
+	position: fixed;
 }
 
 .area-login-user{
 	width: 190px;
-	text-align: center;
 	font-size:15px;
-	margin-left: 25px;
+	position: fixed;
+    margin-left: 115px;
 }
 
 .area-login-user p{
@@ -48,6 +49,11 @@ a:hover{
 .area-login-user a{
 	color:#4F515D;
 	font-weight: 700;
+}
+
+input#nomeUser {
+    border: none;
+    background: none;
 }
 
 .col-md-6-icons a{
@@ -86,6 +92,9 @@ a:hover{
 
 .col-md-3-icons img{
 	width:40px;
+}
+.icon-notifications{
+	display:none;
 }
 
 .icon-house,.icon-friends,.icon-jobs,.icon-notifications,.icon-exit{

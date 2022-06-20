@@ -1,0 +1,81 @@
+<!doctype html>
+<head>
+    <%- include('./partials/head'); %>
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" type="text/css" href="/static/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <!--espaçamento inicial/final-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="espaco"></div>
+            </div>
+        </div>
+         <!--fim espaçamento inicial/final-->
+
+        <div class="area-cadastro">
+                    <h5>Cadastre-se</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <input class="input-text-cadastro1" type="text" name="nome" id="nome" placeholder="Nome">    
+                        </div>
+                        <div class="col-md-6">
+                                <input class="input-text-cadastro1" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                                <input class="input-text-cadastro2" type="text" name="email" id="email" placeholder="Email">       
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <label class="estado">Estado</label>
+                                <select class="select-text-cadastro1" id="uf" name="estado">
+                                    <option></option>
+                                </select>
+                        </div>
+                        <div class="col-md-6">
+                                <label  class="cidade">Cidade</label>
+                                <select class="select-text-cadastro2" id="cidade" name="cidade">
+                                    <option></option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="input-text-cadastro2" type="password" name="password" id="password" placeholder="Senha">
+                        </div>
+                        <div class="col-md-6">
+                            <input class="input-text-cadastro2" type="password" name="confsenha" placeholder="Confirmar Senha">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span id="msg-error"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="checkbox" id="termosdeuso">
+                            <label class="termosdeuso"  for="termos">Declaro que li e concordo com os <a href="https://www.google.com/">Termos de Uso</a> e <a href="https://www.google.com/">Políticas de Privacidade</a></label>
+                        </div>
+                        <div class="col-md-6" >
+                            <button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>
+                        </div>
+                    </div>
+            
+        </div>
+         <!--espaçamento inicial/final-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="espaco"></div>
+            </div>
+        </div>
+         <!--fim espaçamento inicial/final-->
+    </div>
+<script src="../scripts/axios-validacoes.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

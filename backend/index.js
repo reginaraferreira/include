@@ -22,10 +22,12 @@ app.use('/', job);
 app.use('/', logout);*/
 
 const user = require("./models/user/user-controller");
+const login = require("./models/login/login-controller");
 const page = require("./models/page/page-controller");
 
 
 app.use('/', user);
+app.use('/', login);
 app.use('/', page);
 
 

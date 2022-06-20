@@ -4,16 +4,23 @@
 <div class="header-main">
     <div class="row">
         <div class="col-md-3">
-            <a href="http://localhost:8080/feed_noticias">
-                <img src="/static/img/logo.png" class="logo-header" type="button">
-            </a>
-            <div class="area-login-user">
-                <p>Bem-vinda,</p> <class="nomeTeste" name="nomeTeste"></class>
-            </div>
+            
+                
+                    <a href="http://localhost:8080/feed-noticias">
+                        <img src="/static/img/logo.png" class="logo-header" type="button">
+                    </a>
+                
+                
+                    <div class="area-login-user">
+                        <p>Olá,</p><p id="nomeUser"></p>
+                        <!-- <input type="text" class="nomeTeste" name="nomeTeste" id="nomeUser"></input>-->
+                    </div>
+                
+            
         </div>
         <div class="col-md-6-icons">
                 <div class="icon-house">
-                    <a href="http://localhost:8080/feed_noticias">
+                    <a href="http://localhost:8080/feed-noticias">
                         <img src="/static/img/house.png">
                         <p>Inicio</p>
                     </a>
@@ -47,3 +54,16 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var tokenSalvo = localStorage.getItem('token');
+    axios.get('http://localhost:4000/user').then(response => {
+        var user = response.data;
+        var p = document.getElementById('nomeUser');
+        p.innerHTML = user.nome;
+        console.log(user);
+
+    }).catch(err =>{
+        console.log(err);
+    })
+</script>

@@ -8,43 +8,48 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 router.use(express.json());
 
+const { eAdmin } = require('../login/auth');
+
 const User = require ("./user");
 
-//var salt = bcrypt.genSaltSync(10);
+var salt = bcrypt.genSaltSync(10);
 
 
 router.post('/cadastro', async (req, res) => {
-   // var dadosUser = req.body;
-  //  dadosUser.senha = await bcrypt.hash(dadosUser.senha, salt);
+    var dadosUser = req.body;
+    dadosUser.senha = await bcrypt.hash(dadosUser.senha, salt);
 
     await User.create({
-        nome: req.body.nome,
-        sobrenome: req.body.sobrenome,
-        estado: req.body.estado,
-        cidade: req.body.cidade,
-        senha: req.body.senha,
-        email: req.body.email,
-        escolaridade: req.body.escolaridade,
-        instituicao: req.body.instituicao,
-        empresa: req.body.empresa,
-        cargo: req.body.cargo,
-        dianascimento: req.body.dianascimento,
-        mesnascimento: req.body.mesnascimento,
-        anonascimento: req.body.anonascimento}
+        nome: dadosUser.nome,
+        sobrenome: dadosUser.sobrenome,
+        estado: dadosUser.estado,
+        cidade: dadosUser.cidade,
+        senha: dadosUser.senha,
+       // confsenha: req.body.confsenha,
+        email: dadosUser.email
       // ,{model:Page, as: 'pages'}
-    ).then((cadastro) => {
+    }).then((cadastro) =>{
         res.status(200);
-        res.json(cadastro); 
+        res.json(cadastro);
+     //  console.log("Cadastro Realizado" + cadastro);
+       
     }).catch(() => {
-         return res.status(400).json({
-            erro: true,
-            mensagem: "Erro: Usuário não cadastrado com sucesso!"
-        });
+         return res.status(400);
      })
 });
 
 
-router.put('/cadastro/:id', async (req, res) => { //através do token
+router.get('/user', async (req, res)=>{
+    var token = req.params.token;
+    console.log(token);
+    const userAuth = await User.findOne({ where: {id: 1}})
+ 
+    res.json(userAuth);
+})
+
+
+
+/*router.put('/cadastro/:id', async (req, res) => { //através do token
     if(isNaN(req.params.id)){
         res.sendStatus(400); //não é um numero
     }else{
@@ -74,6 +79,6 @@ router.put('/cadastro/:id', async (req, res) => { //através do token
             res.sendStatus(404);
         };
     };
-});
+});*/
 
 module.exports = router;

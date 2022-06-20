@@ -7,9 +7,12 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 router.use(express.json());
 
+const { eAdmin } = require('../login/auth');
+
 const Page = require ("./page");
 
-router.get('/minhas_paginas', async(req, res) =>{
+
+router.get('/minhas_paginas', eAdmin, async(req, res) =>{
     const resultPages = await Page.findAll({})
     res.json(resultPages);
 });
