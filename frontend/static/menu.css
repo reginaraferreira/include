@@ -32,13 +32,11 @@ a:hover{
 	width: 50px;
 	float: left;
 	margin-left: 40px;
-	position: fixed;
 }
 
 .area-login-user{
 	width: 190px;
 	font-size:15px;
-	position: fixed;
     margin-left: 115px;
 }
 

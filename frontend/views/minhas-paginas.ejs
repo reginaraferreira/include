@@ -10,8 +10,8 @@
     <div class="body-feed">
         <div class="row-feed">
             <div class="col-md-3-side-left"> <!--INICIO MENU ESQUERDO-->
-                <%- include('./partials/user_area'); %>
-                <a href="http://localhost:8080/criar_pagina">
+                <%- include('./partials/user-area'); %>
+                <a href="http://localhost:8080/criar-pagina">
                     <input class="botaocriarpagina" type="button" value="Criar Página">
                 </a>
             </div><!--FIM MENU ESQUERDO-->
@@ -45,15 +45,53 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    function visitarPagina(listItem) {
+
+        console.log(listItem);
+    }
+
+
     axios.get("http://localhost:4000/minhas_paginas").then(response => {
         var paginas = response.data;
         var list = document.getElementById("paginas");
 
         paginas.forEach(paginas =>{
             var item = document.createElement("li");
-            item.innerHTML = paginas.titulo + " " + paginas.cidade;
+
+            item.setAttribute("data-id", paginas.id);
+            item.setAttribute("data-title", paginas.title);
+            item.setAttribute("data-city", paginas.city);
+
+            item.innerHTML = paginas.title + "<br> " + paginas.city + "-" +paginas.uf;
+
+            var verPagebtn = document.createElement("button");
+            verPagebtn.innerHTML = "Visitar";
+            verPagebtn.addEventListener("click", function() {
+                
+                visitarPagina(item);
+                window.location.href = "http://localhost:8080/pagina"
+               /* var id = paginas.id;
+                //console.log (id);
+                axios.get("http://localhost:4000/pagina", id).then(response => {
+                   
+                    window.location.href = "http://localhost:8080/feed-noticias"
+                }).catch(error =>{
+                    console.log(error);
+                })*/
+            });
+
+            item.appendChild(verPagebtn);
+
             list.appendChild(item);
         });
+        /* 
+        var user = response.data;
+        var p = document.getElementById('nomeUser');
+        p.innerHTML = user.nome;
+        console.log("menu" + user);
+        */
+
+
 
     }).catch(error =>{
         console.log(error);

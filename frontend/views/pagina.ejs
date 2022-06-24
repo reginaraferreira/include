@@ -1,18 +1,18 @@
 <!doctype html>
 <head>
     <%- include('./partials/head'); %>
-    <title>Inicio - Include</title>
-    <link rel="stylesheet" type="text/css" href="/static/feed.css">
-    
+    <title>Página </title>
+    <link rel="stylesheet" type="text/css" href="/static/feed_paginas.css">
 </head>
 <body>
-    
 	<%- include('./partials/menu'); %>
-       <div class="body-feed">
+    <div class="body-feed">
         <div class="row-feed">
             <div class="col-md-3-side-left"> <!--INICIO MENU ESQUERDO-->
-                <%- include('./partials/user-area'); %>
-                <%- include('./partials/button-side'); %>
+                <%- include('./partials/page-area'); %>
+                <div class="button-side">
+                 <a href= "http://localhost:8080/incluir-vaga"><input class="button-page" type="button" value="Anunciar Vaga"></a>
+                </div>
             </div><!--FIM MENU ESQUERDO-->
             <div class="col-md-6-feed"> <!--INICIO FEED-->
               <div class="head-feed">
@@ -23,17 +23,14 @@
               </div>
             </div> <!--FIM FEED-->
             <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO-->
-                <%- include('./partials/friends-zone'); %>  
+                <%- include('./partials/vagas-zone'); %>  
+                <%- include('./partials/friends-zone'); %> 
+               
             </div><!--FIM MENU DIREITO-->
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  /*  var socket = io('http://localhost:8080');
-    socket.emit("boasvindas",{nome:"Reginara"});
-*/
-</script>
+<script src="/scripts/paginas.js"></script>
 </body>
 </html>

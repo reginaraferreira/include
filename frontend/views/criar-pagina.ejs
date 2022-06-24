@@ -19,32 +19,18 @@
 						<div class="area-cadastro">
 							<div class="info-basica-page">
 								<div class="row">
-					<form action="/cadastroPagina-realizado" method="post">
-									<div class="col-md-12">
-											<h3 class="title-main-text-pages">Selecione o tipo de Página:</h3>
-									</div>
-								</div>
-								<div class="row-tipo-pagina">
-									<div class="col-md-2"></div>
-									<div class="col-md-4">
-										<input class="botaotipopagina" type="button" name="empresarial" value="Empresarial">
-									</div>
-									<div class="col-md-4">
-										<input class="botaotipopagina" type="button" name="institucional" value="Institucional">
-									</div>
-									<div class="col-md-2"></div>
 								</div>
 								<div class="menu-info-basica">
 									<div class="row-tipo-pagina">
 										<div class="col-md-12">
 											<p>Título da Página: </p>
-											<input class="info-page-edit" type="text" name="titulo" value= "" >
+											<input class="info-page-edit" type="text" id="tituloPage" value= "" >
 										</div>
 									</div>
 									<div class="row-tipo-pagina">
 										<div class="col-md-12">
 											<p>Descrição: </p>
-											<textarea class="info-page-edit" type="text" name="descricao" value= ""></textarea>
+											<textarea class="info-page-edit" type="text" id="descricao" value= ""></textarea>
 										</div>
 									</div>
 								</div>
@@ -57,7 +43,7 @@
 												<p class="nome-select-page">Categoria: </p>
 											</div>
 											<div class="col-md-9">
-												<select class="info-page-edit" name="categoria">
+												<select class="info-page-edit" id="categoria">
 													<option></option>
 													<option value="Alimentos">Alimentos e Bebidas</option>
 													<option value="TI">Tecnologia e Informação</option>
@@ -72,7 +58,7 @@
 												<p class="nome-select-page">Tipo de Empresa: </p>
 											</div>
 											<div class="col-md-9">
-												<select class="info-page-edit" name="tipo">
+												<select class="info-page-edit" id="tipoEmpresa">
 													<option></option>
 													<option value="Privada">Empresa Privada</option>
 													<option value="Publica">Empresa Pública</option>
@@ -103,12 +89,12 @@
 						</div>	
 						<div class="row">
 							<div class="col-md-6-botoes">
-								<input class="botaoredefinir" type="submit" value="Salvar">
+								<input class="botaoredefinir" type="button" onclick="createPagina()" value="Salvar">
+								<!--<button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>-->
 							</div>
-					</form>
 						<div class="col-md-6-botoes">
 							<!--<form action="/logoff" method="post">  -->
-							<a href="http://localhost:8080/minhas_paginas">
+							<a href="http://localhost:8080/minhas-paginas">
 								<input class="botaovoltar" type="button" value="Voltar">
 							</a>
 							<!--</form>-->
@@ -124,6 +110,7 @@
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="/scripts/validacoes_cadastrovaga.js"></script>
+<script src="/scripts/criar-paginas.js"></script>
+<script src="/scripts/select-estados.js"></script>
 </body>
 </html>

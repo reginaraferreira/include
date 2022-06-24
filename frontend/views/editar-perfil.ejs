@@ -14,19 +14,19 @@
         
             <div class="col-md-6-feed"> <!--INICIO FEED-->
                 <div class="info-user-area-edit">
-                    <form action="/atualizar-perfil" method="post">
                         <div class="row">
-                            <img src="static/img/upload.png" class="img-profile" type="button">
+                            <h5>Editar Perfil</h5>
+                          <!--  <img src="static/img/upload.png" class="img-profile" type="button">
                             <label for="imagemPhoto"><img src="static/img/mais_icone.png" id="imgPhoto"></label>
-                            <input type="file" id="avatar-profile" name="img-profile" accept="image/*">
-                        </div>
+                            <input type="file" id="avatar-profile" name="img-profile" accept="image/*">-->
+                        </div> 
                         <div class="menu-info-user">
                             <div class="row">
                                 <div class="col-md-7">
-                                    <p>Nome: </p><input class="nome-user-edit" type="text" name="nome" value= "Reginara">
+                                    <p>Nome: </p><input class="nome-user-edit" type="text" id="Editnome" value= "">
                                 </div>
                                 <div class="col-md-5">
-                                    <p>Sobrenome: </p><input class="info-user-edit" type="text" name="sobrenome" value="Ferreira">
+                                    <p>Sobrenome: </p><input class="info-user-edit" type="text" id="Editsobrenome" value="">
                                 </div>
                             </div>
                             <div class="row">
@@ -34,21 +34,21 @@
                                         <p>Data de Nascimento: </p>
                                     </div>
                                     <div class="col-md-3">
-                                        <input class="info-user-edit" type="text" name="dianascimento" value="">
+                                        <input class="info-user-edit" type="text" id="Editdianascimento" value="">
                                     </div>
                                     <div class="col-md-3">
-                                        <input class="info-user-edit" type="text" name="mesnascimento" value= "">
+                                        <input class="info-user-edit" type="text" id="Editmesnascimento" value= "">
                                     </div>
                                     <div class="col-md-3">
-                                        <input class="info-user-edit" type="text" name="anonascimento" value="">
+                                        <input class="info-user-edit" type="text" id="Editanonascimento" value="">
                                     </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p>Estado: </p><input class="info-user-edit" type="text" name="estado" value="">
+                                    <p>Estado: </p><input class="info-user-edit" type="text" id="Editestado" value="">
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Cidade: </p><input class="info-user-edit" type="text" name="cidade" value="">
+                                    <p>Cidade: </p><input class="info-user-edit" type="text" id="Editcidade" value="">
                                 </div>
                             </div>
                         </div>
@@ -56,10 +56,10 @@
                         <h5>Educação</h5>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p>Escolaridade: </p><input class="info-user-edit" type="text" name="escolaridade" value= "">
+                                    <p>Escolaridade: </p><input class="info-user-edit" type="text" id="Editescolaridade" value= "">
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Instituição: </p><input class="info-user-edit" type="text" name="instituicao" value= "">
+                                    <p>Instituição: </p><input class="info-user-edit" type="text" id="Editinstituicao" value= "">
                                 </div>
                             </div>
                         </div>
@@ -67,19 +67,18 @@
                             <h5>Trabalho</h5>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p>Empresa: </p><input class="info-user-edit" type="text" name="empresa" value= "">
+                                    <p>Empresa: </p><input class="info-user-edit" type="text" id="Editempresa" value= "">
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Cargo Atual: </p><input class="info-user-edit" type="text" name="cargo" value= "">
+                                    <p>Cargo Atual: </p><input class="info-user-edit" type="text" id="Editcargo" value= "">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6-botoes">
-                            <input class="botaoredefinir" type="submit" value="Salvar">
+                            <input class="botaoredefinir" type="button" onclick="editarPerfil()" value="Salvar">
                         </div>
-                </form>
                     <div class="col-md-6-botoes">
                           <a href= "http://localhost:8080/perfil">
                             <input class="botaovoltar" type="button" value="Voltar">
@@ -95,5 +94,54 @@
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="../scripts/user.js"></script>
+<script>
+    var axiosConfig = {
+        headers: {
+            Authorization: "Bearer" + localStorage.getItem("token")
+           // 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+    };
+
+     axios.get('http://localhost:4000/user', axiosConfig).then(response => {
+         var user = response.data;
+
+         var Editnome = document.getElementById('Editnome');
+         Editnome.setAttribute('value', user.nome);
+
+         var Editsobrenome = document.getElementById('Editsobrenome');
+         Editsobrenome.setAttribute('value', user.sobrenome);
+
+         var Editdianascimento = document.getElementById('Editdianascimento');
+         Editdianascimento.setAttribute('value', user.dianascimento);
+
+         var Editmesnascimento = document.getElementById('Editmesnascimento');
+         Editmesnascimento.setAttribute('value', user.mesnascimento);
+
+         var Editanonascimento = document.getElementById('Editanonascimento');
+         Editanonascimento.setAttribute('value', user.anonascimento);
+
+         var Editestado = document.getElementById('Editestado');
+         Editestado.setAttribute('value', user.estado);
+
+         var Editcidade = document.getElementById('Editcidade');
+         Editcidade.setAttribute('value', user.cidade);
+
+         var Editescolaridade = document.getElementById('Editescolaridade');
+         Editescolaridade.setAttribute('value', user.escolaridade);
+
+         var Editinstituicao = document.getElementById('Editinstituicao');
+         Editinstituicao.setAttribute('value', user.instituicao);
+
+         var Editempresa = document.getElementById('Editempresa');
+         Editempresa.setAttribute('value', user.empresa);
+
+         var Editcargo = document.getElementById('Editcargo');
+         Editcargo.setAttribute('value', user.cargo);
+ 
+     }).catch(err =>{
+         console.log(err);
+     })
+ </script>
 </body>
 </html>

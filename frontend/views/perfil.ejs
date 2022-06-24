@@ -21,7 +21,7 @@
                     <span id="estadoUser"></span>
                 </div>
                 <div class="button-side">
-                    <a href= "http://localhost:8080/editar-perfil"><input class="button-profile" type="button" value="Editar Perfil"></a>
+                    <a href= "http://localhost:8080/editar-perfil"><input type="button" class="button-profile" value="Editar Perfil"></a>
                 </div>
                 <%- include('./partials/win-area'); %>
             </div> <!--FIM MENU ESQUERDO-->
@@ -44,26 +44,6 @@
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script>
-   // var tokenSalvo = localStorage.getItem('token');
-    axios.get('http://localhost:4000/user').then(response => {
-        var user = response.data;
-        // escolaridadeUser
-        var span = document.getElementById('nomeUserPerfil');
-        span.innerHTML = user.nome;
-        var span1 = document.getElementById('sobrenomeUserPerfil');
-        span1.innerHTML ='  ' + user.sobrenome;
-        var span2 = document.getElementById('cidadeUser');
-        span2.innerHTML = user.cidade;
-        var span3 = document.getElementById('estadoUser');
-        span3.innerHTML =' - ' + user.estado;
-        var p = document.getElementById('escolaridadeUser');
-        p.innerHTML = user.escolaridade;
-        
-
-    }).catch(err =>{
-        console.log(err);
-    })
-</script>
+<script src="../scripts/perfil-usuario.js"></script>
 </body>
 </html>

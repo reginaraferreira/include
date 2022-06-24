@@ -15,16 +15,6 @@
     margin-bottom: 10px;
 }
 
-.titulo-pagina {
-    color: #4F515D;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding-left: 50px;
-    font-size: 20px;    
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
 .nome-pages {
     color: #4F515D;
     font-weight: bold;
@@ -63,7 +53,33 @@
 
 
 ul.tipo-pagina {
-    margin-left: 50px;
+    margin-left: 40px;
+}
+
+.tipo-pagina li {
+    margin-top: 20px;
+    margin-left: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+.tipo-pagina button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 120px;
+    height: 30px;
+    background-color: #4285F4;
+    border-radius: 30PX;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+
+}
+
+.tipo-pagina button:hover{
+    border: none;
 }
 
 .tipo-pagina-li {

@@ -58,6 +58,7 @@
 }
 
 .button-side input{
+	text-align: center;
 	width: 135px;
     height: 31px;
     margin-bottom: 15px;

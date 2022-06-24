@@ -56,12 +56,18 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    var tokenSalvo = localStorage.getItem('token');
-    axios.get('http://localhost:4000/user').then(response => {
+    var axiosConfig = {
+        headers: {
+            Authorization: "Bearer" + localStorage.getItem("token")
+           //Content-Type : 'application/json'
+        }
+    };
+    
+    axios.get('http://localhost:4000/user', axiosConfig).then(response => {
         var user = response.data;
         var p = document.getElementById('nomeUser');
         p.innerHTML = user.nome;
-        console.log(user);
+        console.log("menu" + user);
 
     }).catch(err =>{
         console.log(err);
