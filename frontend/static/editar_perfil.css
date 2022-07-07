@@ -17,9 +17,6 @@
 }
 
 .img-profile{
-	display: flex;
-    margin-left: auto;
-    margin-right: auto;
 	margin-top:25px;
 	margin-bottom:15px;
 	border-radius:40px;
@@ -34,17 +31,48 @@ input[type ='file']{
     display: none;
 }
 
-img#imgPhoto {
-	width: 40px;
-	margin-top: 210px;
-	margin-left: -315px;
+.max-width{
+    max-width: 175px;
+    width: 100%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+
 }
+
+#imgPhoto{
+    margin-top: 10%;
+    max-width: 300px;
+    width: 100%;
+    padding: 10px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+#imgPhoto:hover{
+    background-color: #4F515D;
+
+}
+
 
 .info-user-area-edit p{
 	font-weight: bold;
 	margin: 5px;
 }
 .nome-user-edit, .info-user-edit{
+	color: #4F515D;
+    margin-bottom: 10px;
+	padding-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #F0F0F0;
+}
+
+.info-user-date{
 	color: #4F515D;
     margin-bottom: 10px;
 	padding-left: 20px;

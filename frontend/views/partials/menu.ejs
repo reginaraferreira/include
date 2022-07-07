@@ -44,12 +44,10 @@
                 <p>Notificacao</p>
             </div>
             <div class="icon-exit">
-                <form action="/logout" method="POST">
-                    <button type="submit" class="exit">
+                    <button type="button" onclick="sair()" class="exit">
                         <img src="/static/img/sair.png">
                     </button>
                     <p>Sair</p>
-                </form>   
             </div> 
         </div>
     </div>
@@ -62,14 +60,23 @@
            //Content-Type : 'application/json'
         }
     };
-    
-    axios.get('http://localhost:4000/user', axiosConfig).then(response => {
+
+    var id = localStorage.getItem("id");
+
+    axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
         var user = response.data;
         var p = document.getElementById('nomeUser');
-        p.innerHTML = user.nome;
-        console.log("menu" + user);
+        p.innerHTML = user.username;
+       // console.log(response.data);
 
     }).catch(err =>{
         console.log(err);
     })
+
+    function sair(){
+        localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        localStorage.removeItem('Page');
+        window.location.href = "http://localhost:8080/"
+    }
 </script>

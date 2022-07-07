@@ -46,16 +46,24 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function visitarPagina(listItem) {
-
         console.log(listItem);
     }
 
+    var axiosConfig = {
+        headers: {
+            Authorization: localStorage.getItem("token"),
+           // 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+    };
 
-    axios.get("http://localhost:4000/minhas_paginas").then(response => {
+
+    axios.get("https://social-backend-tcc.herokuapp.com/pages/", axiosConfig).then(response => {
         var paginas = response.data;
         var list = document.getElementById("paginas");
-
+        var idUser = localStorage.getItem("id");
+        
         paginas.forEach(paginas =>{
+            if (paginas.user == idUser){
             var item = document.createElement("li");
 
             item.setAttribute("data-id", paginas.id);
@@ -69,7 +77,7 @@
             verPagebtn.addEventListener("click", function() {
                 
                 visitarPagina(item);
-                window.location.href = "http://localhost:8080/pagina"
+                window.location.href = "http://localhost:8080/pagina/"+paginas.id
                /* var id = paginas.id;
                 //console.log (id);
                 axios.get("http://localhost:4000/pagina", id).then(response => {
@@ -83,6 +91,7 @@
             item.appendChild(verPagebtn);
 
             list.appendChild(item);
+        }
         });
         /* 
         var user = response.data;

@@ -57,16 +57,20 @@
     margin-bottom: 20px;
 }
 
-input.botaotipopagina {
+.botaotipopagina {
     width: 190px;
     height: 30px;
     background-color: #4285F4;
     border-radius: 10px;
+    border: none;
     text-transform: uppercase;
     color: #fff;
     border: none;
 }
 
+.botaotipopagina option {
+    background: #426599;
+}
 
 input.btn-questionario{
     display: flex;

@@ -1,0 +1,220 @@
+<!doctype html>
+<head>
+    <%- include('./partials/head'); %>
+    <title>Cadastrar Questionário</title>
+	<link rel="stylesheet" type="text/css" href="/static/feed.css">
+    <link rel="stylesheet" type="text/css" href="/static/criar-formulario.css">
+</head>
+<body>
+	<%- include('./partials/menu'); %>
+    <div class="body-feed">
+    	<div class="row-feed">
+        	<div class="col-md-3-side-left"> <!--INICIO MENU ESQUERDO-->
+				<p class="nome-forms-menu">Cadastrar questionário</p>
+            </div><!--FIM MENU ESQUERDO-->
+           	<div class="col-md-6-feed"> <!--INICIO FEED-->
+				<div class="head-feed">
+					<div class="form-zone">
+						<div class="area-cadastro">
+							<div class="info-basica-page">
+								<div class="row">
+									<div class="col-md-12">
+								</div>
+							</div>
+							</div>
+							<div class="menu-info-basica">
+								<div class="row-itens">
+									<div class="col-md-12">
+										<p>Você poderá incluir até 10 questões de multipla escolha.</p>
+									</div>
+								</div>
+								
+								<div id="divconteudo1">
+									<div class="row-itens">
+										<div class="col-md-2">
+												<span class="titulo-pergunta">Pergunta 1:</span>
+										</div>
+										<div class="col-md-10">
+												<input class="input-pergunta" type="text" id="questao1" value= "">
+										</div>
+									</div>
+									<div class="row-itens">
+										<div class="col-md-10">
+											<div class="option1">
+												<input type="radio" id="checkopcao1" name="questao1">
+												<input class="opcao-pergunta" type="text" id="opcao1" value= "Opção 1">
+												<button class="btn-opcao" onclick="exibiroption2()">+</button>
+												
+											</div>
+											<div id="option2">
+												<input type="radio" id="checkopcao2" name="questao1">
+												<input class="opcao-pergunta" type="text" id="opcao2" value= "Opção 2">
+												<button class="btn-opcao" onclick="exibiroption3()">+</button>
+											</div>
+											<div id="option3">
+												<input type="radio" id="checkopcao3" name="questao1">
+												<input class="opcao-pergunta" type="text" id="opcao3" value= "Opção 3">
+												<button class="btn-opcao" onclick="exibiroption4()">+</button>
+											</div>
+											<div id="option4">
+												<input type="radio" id="checkopcao4" name="questao1">
+												<input class="opcao-pergunta" type="text" id="opcao4" value= "Opção 4">
+											</div>
+										</div>
+									</div>
+									<div class="container-questao" id="container-questao1">
+											<input class="add-questao" onclick="exibirquestao2()" type="button" name="" value= "Adicionar Pergunta"> 
+									</div>
+								</div>
+								<div id="divconteudo2">
+									<div class="row-itens">
+										<div class="col-md-2">
+												<span class="titulo-pergunta">Pergunta 2:</span>
+										</div>
+										<div class="col-md-10">
+												<input class="input-pergunta" type="text" id="questao2" value= "">
+										</div>
+									</div>
+									<div class="row-itens">
+										<div class="col-md-10">
+											<div class="option1">
+												<input type="radio" id="checkopcao21" name="questao2">
+												<input class="opcao-pergunta" type="text" id="opcao21" value= "Opção 1">
+												<button class="btn-opcao" onclick="exibiroption22()">+</button>
+											</div>
+											<div id="option22">
+												<input type="radio" id="checkopcao22" name="questao2">
+												<input class="opcao-pergunta" type="text" id="opcao22" value= "Opção 2">
+												<button class="btn-opcao" onclick="exibiroption23()">+</button>
+											</div>
+											<div id="option23">
+												<input type="radio" id="checkopcao23" name="questao2">
+												<input class="opcao-pergunta" type="text" id="opcao23" value= "Opção 3">
+												<button class="btn-opcao" onclick="exibiroption24()">+</button>
+											</div>
+											<div id="option24">
+												<input type="radio" id="checkopcao24" name="questao2">
+												<input class="opcao-pergunta" type="text" id="opcao24" value= "Opção 4">
+											</div>
+										</div>
+									</div>
+									<div class="container-questao" id="container-questao2">
+											<input class="add-questao" onclick="exibirquestao3()" type="button" name="" value= "Adicionar Pergunta"> 
+									</div>
+								</div>
+								
+
+
+
+							</div>		
+						</div>
+						<div class="row-feed">
+							<div class="col-md-2"></div>
+							<div class="col-md-4">
+								<a href="http://localhost:8080/incluir-vaga">
+									<input class="botaoredefinir" type="button" onclick="criarFormulario()" value="Salvar">
+								</a>
+								<!--<button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>-->
+							</div>
+							<div class="col-md-4">
+								<!--<form action="/logoff" method="post">  -->
+								<a href="http://localhost:8080/minhas-paginas">
+									<input class="botaovoltar" type="button" value="Voltar">
+								</a>
+								<!--</form>-->
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+					</div>
+				</div>
+        	</div> <!--FIM FEED-->
+		</div>
+        <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO--></div>
+    </div>
+    	
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+	function criarFormulario(){
+		var questao1 = document.getElementById("questao1");
+		var opcao1 = document.getElementById("opcao1");
+		var opcao2 = document.getElementById("opcao2");
+		var opcao3 = document.getElementById("opcao3");
+		var opcao4 = document.getElementById("opcao4");
+
+		var questao2 = document.getElementById("questao2");
+		var opcao21 = document.getElementById("opcao21");
+		var opcao22 = document.getElementById("opcao22");
+		var opcao23 = document.getElementById("opcao23");
+		var opcao24 = document.getElementById("opcao24");
+
+		var i = 0;
+
+		var quiz = {
+			question: [
+				{
+				answer: [
+					{
+						text: opcao1.value,
+						is_true: true
+					},
+					{
+						text: opcao2.value,
+						is_true: false
+					},
+					{
+						text: opcao3.value,
+						is_true: false
+					},
+					{
+						text: opcao4.value,
+						is_true: false
+					}
+				],
+				text: questao1.value
+				}
+			],
+			question: [
+				{
+				answer: [
+					{
+						text: opcao21.value,
+						is_true: true
+					},
+					{
+						text: opcao22.value,
+						is_true: false
+					},
+					{
+						text: opcao23.value,
+						is_true: false
+					},
+					{
+						text: opcao24.value,
+						is_true: false
+					}
+				],
+				text: questao2.value
+				}
+			],
+		text: "quizteste"
+		}
+		axios.post("https://social-backend-tcc.herokuapp.com/quiz/", quiz)
+		.then(response => {
+			var quiz = response.data;
+			localStorage.setItem("idQuiz", quiz.id);
+		
+			console.log("SUCESSO");
+			
+		}).catch(err => {
+			console.log(err);
+		});
+
+		
+}
+		var quiz = 7//response.data;
+		localStorage.setItem("idQuiz", quiz);
+</script>
+
+</body>
+</html>

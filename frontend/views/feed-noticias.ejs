@@ -16,14 +16,45 @@
             </div><!--FIM MENU ESQUERDO-->
             <div class="col-md-6-feed"> <!--INICIO FEED-->
               <div class="head-feed">
-                    <%- include('./partials/create-publication'); %>
-                    <div class="feed-updates-zone">
-                        <!--feed de noticias -->
+                <div class="publication">
+                    <input class="create-publication" type="text" id="create-text" placeholder="Criar publicação">
+                    <div class="icons-publication">
+                        <a href="http://www.google.com" class="icon-foto">
+                            <img src="/static/img/fotos.png"><p>Fotos</p>
+                        </a>
+                        <a href="http://www.google.com" class="icon-foto">
+                        <img src="/static/img/video.png"><p>Video</p>
+                        </a>
+                        <a href="http://www.google.com" class="icon-foto">
+                        <img src="/static/img/marcar_amigo.png"><p>Marcar</p>
+                        </a>
+                        <a href="http://www.google.com" class="icon-foto">
+                        <img src="/static/img/localizacao.png"><p>Localização</p>
+                        </a>
+                        <input class="publish" type="button" onclick="publicar()" value="Publicar">
+                    </div>
+                </div>
+
+
+                    <div class="feed-updates-zone" id="feedNoticias">
+                        <div class="dados-user-publicacao">
+                            <span class="dados-user" id="nomeUserPublic"></span>
+                            <span class="dados-user" id="sobrenomeUserPublic"></span>
+                        
+                            <p id="chat" class="chat"></p>
+                            <div class="dados-fake">
+                            <p> Reginara Ferreira diz:</p>
+                            <p> Tem vaga nova disponivel. Confira na area de vagas! </p>
+                            </div>
+                            <div class="dados-fake">
+                                <p> Reginara Ferreira diz:</p>
+                                <p> Bem vindo a nossa rede social! </p>
+                            </div>
                     </div>
               </div>
             </div> <!--FIM FEED-->
             <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO-->
-                <%- include('./partials/friends-zone'); %>  
+                
             </div><!--FIM MENU DIREITO-->
         </div>
     </div>
@@ -31,9 +62,48 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  /*  var socket = io('http://localhost:8080');
-    socket.emit("boasvindas",{nome:"Reginara"});
-*/
+
+    var socket = io('http://localhost:8080');
+
+
+    socket.on("mensagem", (data) => {
+        var feedNoticias = document.getElementById("feedNoticias");
+        var p = document.createElement("p");
+        p.innerHTML = data;
+        feedNoticias.append(p);
+    });
+
+    socket.on("respublicacao", (data) => {
+        var chat = document.getElementById("chat");
+        var p = document.createElement("p");
+        p.innerHTML = data;
+        chat.append(p);
+
+    });
+
+    function publicar(){        
+        var id = localStorage.getItem("id");
+
+    axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
+        var user = response.data;
+        var userC = document.getElementById('nomeUserPublic');
+        userC.innerHTML = user.username + " ";
+        var span = document.getElementById('sobrenomeUserPublic');
+        span.innerHTML = user.last_name + " diz: ";
+       // console.log(response.data);
+
+    }).catch(err =>{
+        console.log(err);
+    })
+
+        var create_text = document.getElementById ("create-text");
+
+        var mensagem = create_text.value;
+        socket.emit("publicacao", mensagem);
+    }
+
+
+
 </script>
 </body>
 </html>

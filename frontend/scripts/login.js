@@ -17,7 +17,11 @@ function fazerLogin(){
         password
     }).then(res =>{
         var token = res.data.tokens;
+        
+        //localStorage.setItem('valores', JSON.stringify(object))
         localStorage.setItem("token", token);
+        localStorage.setItem("id", res.data.id)
+       // console.log(res.data);
         window.location.href = "http://localhost:8080/feed-noticias"
     }).catch(err =>{
         if (err.response) {

@@ -14,11 +14,19 @@
         
             <div class="col-md-6-feed"> <!--INICIO FEED-->
                 <div class="info-user-area-edit">
+                    <h5>Editar Perfil</h5>
                         <div class="row">
-                            <h5>Editar Perfil</h5>
-                          <!--  <img src="static/img/upload.png" class="img-profile" type="button">
-                            <label for="imagemPhoto"><img src="static/img/mais_icone.png" id="imgPhoto"></label>
-                            <input type="file" id="avatar-profile" name="img-profile" accept="image/*">-->
+                            <form method="post" enctype="multipart/form-data" action="/upload">
+                                <div class="max-width">
+                                    <div class="imageContainer">
+                                        <img src="/static/img/camera.png" alt="Selecione uma imagem" id="imgPhoto" class="img-profile" type="button">
+                                    </div>
+                                </div>
+                            
+                           <!--   
+                          <label for="imagemPhoto"><img src="static/img/mais_icone.png" id="imgPhoto"></label>-->
+                            <input type="file" id="fileImage" name="fileImage" accept="image/*">
+                        
                         </div> 
                         <div class="menu-info-user">
                             <div class="row">
@@ -30,17 +38,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <p>Data de Nascimento: </p>
                                     </div>
-                                    <div class="col-md-3">
-                                        <input class="info-user-edit" type="text" id="Editdianascimento" value="">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input class="info-user-edit" type="text" id="Editmesnascimento" value= "">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input class="info-user-edit" type="text" id="Editanonascimento" value="">
+                                    <div class="col-md-6">
+                                        <input type="date" class="info-user-edit" id="Editnascimento"></input>
                                     </div>
                             </div>
                             <div class="row">
@@ -77,8 +79,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6-botoes">
-                            <input class="botaoredefinir" type="button" onclick="editarPerfil()" value="Salvar">
+                           
+                            <input class="botaoredefinir" type="submit" onclick="editarPerfil()" value="Salvar">
                         </div>
+                    </form>
                     <div class="col-md-6-botoes">
                           <a href= "http://localhost:8080/perfil">
                             <input class="botaovoltar" type="button" value="Voltar">
@@ -94,8 +98,29 @@
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="../scripts/user.js"></script>
+<script src="../scripts/editar-perfil.js"></script>
 <script>
+
+    let photo = document.getElementById('imgPhoto');
+    let file = document.getElementById('fileImage');
+
+    photo.addEventListener('click', () =>{
+        file.click(); //chama o file input que eu ocultei
+    });
+
+    file.addEventListener('change', (event)=>{
+
+        if (file.files.length <=0){
+            return; 
+        }
+        let reader = new FileReader(); 
+        reader.onload = () => { //quando ele for carregado
+            photo.src = reader.result;  
+        }
+        reader.readAsDataURL(file.files[0]);
+
+    });
+
     var axiosConfig = {
         headers: {
             Authorization: "Bearer" + localStorage.getItem("token")
@@ -103,41 +128,35 @@
         }
     };
 
-     axios.get('http://localhost:4000/user', axiosConfig).then(response => {
+     axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
          var user = response.data;
 
          var Editnome = document.getElementById('Editnome');
-         Editnome.setAttribute('value', user.nome);
+         Editnome.setAttribute('value', user.username);
 
          var Editsobrenome = document.getElementById('Editsobrenome');
-         Editsobrenome.setAttribute('value', user.sobrenome);
+         Editsobrenome.setAttribute('value', user.last_name);
 
-         var Editdianascimento = document.getElementById('Editdianascimento');
-         Editdianascimento.setAttribute('value', user.dianascimento);
-
-         var Editmesnascimento = document.getElementById('Editmesnascimento');
-         Editmesnascimento.setAttribute('value', user.mesnascimento);
-
-         var Editanonascimento = document.getElementById('Editanonascimento');
-         Editanonascimento.setAttribute('value', user.anonascimento);
+         var Editnascimento = document.getElementById('Editnascimento');
+         Editnascimento.setAttribute('value', user.birthday);
 
          var Editestado = document.getElementById('Editestado');
-         Editestado.setAttribute('value', user.estado);
+         Editestado.setAttribute('value', user.uf);
 
          var Editcidade = document.getElementById('Editcidade');
-         Editcidade.setAttribute('value', user.cidade);
+         Editcidade.setAttribute('value', user.city);
 
          var Editescolaridade = document.getElementById('Editescolaridade');
-         Editescolaridade.setAttribute('value', user.escolaridade);
+         Editescolaridade.setAttribute('value', user.schooling);
 
          var Editinstituicao = document.getElementById('Editinstituicao');
-         Editinstituicao.setAttribute('value', user.instituicao);
+         Editinstituicao.setAttribute('value', user.institution);
 
          var Editempresa = document.getElementById('Editempresa');
-         Editempresa.setAttribute('value', user.empresa);
+         Editempresa.setAttribute('value', user.company);
 
          var Editcargo = document.getElementById('Editcargo');
-         Editcargo.setAttribute('value', user.cargo);
+         Editcargo.setAttribute('value', user.current_job);
  
      }).catch(err =>{
          console.log(err);

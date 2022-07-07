@@ -1,0 +1,622 @@
+<!doctype html>
+<head>
+    <%- include('./partials/head'); %>
+    <title>Cadastrar Questionário</title>
+	<link rel="stylesheet" type="text/css" href="/static/feed.css">
+    <link rel="stylesheet" type="text/css" href="/static/criar-formulario.css">
+</head>
+<body>
+	<%- include('./partials/menu'); %>
+    <div class="body-feed">
+    	<div class="row-feed">
+        	<div class="col-md-3-side-left"> <!--INICIO MENU ESQUERDO-->
+				<p class="nome-forms-menu">Cadastrar questionário</p>
+            </div><!--FIM MENU ESQUERDO-->
+           	<div class="col-md-6-feed"> <!--INICIO FEED-->
+				<div class="head-feed">
+					<div class="form-zone">
+						<div class="area-cadastro">
+							<div class="info-basica-page">
+								<div class="row">
+									<div class="col-md-12">
+								</div>
+							</div>
+							</div>
+							<div class="menu-info-basica">
+								<div class="row-itens">
+									<div class="col-md-12">
+										<p>Você poderá incluir até 10 questões de multipla escolha.</p>
+									</div>
+								</div>
+							</div>
+							<div id="divconteudo1">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 1:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao1" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="radio" id="checkopcao1" name="questao1">
+											<input class="opcao-pergunta" type="text" id="opcao1" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption2()">+</button>
+											
+										</div>
+										<div id="option2">
+											<input type="radio" id="checkopcao2" name="questao1">
+											<input class="opcao-pergunta" type="text" id="opcao2" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption3()">+</button>
+										</div>
+										<div id="option3">
+											<input type="radio" id="checkopcao3" name="questao1">
+											<input class="opcao-pergunta" type="text" id="opcao3" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption4()">+</button>
+										</div>
+										<div id="option4">
+											<input type="radio" id="checkopcao4" name="questao1">
+											<input class="opcao-pergunta" type="text" id="opcao4" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao1">
+										<input class="add-questao" onclick="exibirquestao2()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo2">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 2:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao2" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="radio" id="checkopcao21" name="questao2">
+											<input class="opcao-pergunta" type="text" id="opcao21" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption22()">+</button>
+										</div>
+										<div id="option22">
+											<input type="radio" id="checkopcao22" name="questao2">
+											<input class="opcao-pergunta" type="text" id="opcao22" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption23()">+</button>
+										</div>
+										<div id="option23">
+											<input type="radio" id="checkopcao23" name="questao2">
+											<input class="opcao-pergunta" type="text" id="opcao23" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption24()">+</button>
+										</div>
+										<div id="option24">
+											<input type="radio" id="checkopcao24" name="questao2">
+											<input class="opcao-pergunta" type="text" id="opcao24" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao2">
+										<input class="add-questao" onclick="exibirquestao3()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo3">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 3:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao3" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="radio" id="checkopcao31" name="questao3">
+											<input class="opcao-pergunta" type="text" id="opcao31" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption32()">+</button>
+										</div>
+										<div id="option32">
+											<input type="radio" id="checkopcao32" name="questao3">
+											<input class="opcao-pergunta" type="text" id="opcao32" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption33()">+</button>
+										</div>
+										<div id="option33">
+											<input type="radio" id="checkopcao33" name="questao3">
+											<input class="opcao-pergunta" type="text" id="opcao33" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption34()">+</button>
+										</div>
+										<div id="option34">
+											<input type="radio" id="checkopcao33" name="questao3">
+											<input class="opcao-pergunta" type="text" id="opcao34" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao3">
+										<input class="add-questao" onclick="exibirquestao4()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo4">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 4:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao4" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="radio" id="checkopcao41" name="questao4">
+											<input class="opcao-pergunta" type="text" id="opcao41" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption42()">+</button>
+										</div>
+										<div id="option42">
+											<input type="radio" id="checkopcao42" name="questao4">
+											<input class="opcao-pergunta" type="text" id="opcao42" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption43()">+</button>
+										</div>
+										<div id="option43">
+											<input type="radio" id="checkopcao43" name="questao4">
+											<input class="opcao-pergunta" type="text" id="opcao43" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption44()">+</button>
+										</div>
+										<div id="option44">
+											<input type="radio" id="checkopcao44" name="questao4">
+											<input class="opcao-pergunta" type="text" id="opcao44" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao4">
+										<input class="add-questao" onclick="exibirquestao5()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo5">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 5:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao5" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="radio" id="checkopca51" name="questao5">
+											<input class="opcao-pergunta" type="text" id="opcao51" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption52()">+</button>
+										</div>
+										<div id="option52">
+											<input type="radio" id="checkopcao52" name="questao5">
+											<input class="opcao-pergunta" type="text" id="opcao52" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption53()">+</button>
+										</div>
+										<div id="option53">
+											<input type="radio" id="checkopcao53" name="questao5">
+											<input class="opcao-pergunta" type="text" id="opcao53" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption54()">+</button>
+										</div>
+										<div id="option54">
+											<input type="radio" id="checkopcao54" name="questao5">
+											<input class="opcao-pergunta" type="text" id="opcao54" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao5">
+										<input class="add-questao" onclick="exibirquestao6()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo6">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 6:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao6" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="checkbox" id="checkopcao61">
+											<input class="opcao-pergunta" type="text" id="opcao61" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption62()">+</button>
+										</div>
+										<div id="option62">
+											<input type="checkbox" id="checkopcao62">
+											<input class="opcao-pergunta" type="text" id="opcao62" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption63()">+</button>
+										</div>
+										<div id="option63">
+											<input type="checkbox" id="checkopcao63">
+											<input class="opcao-pergunta" type="text" id="opcao63" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption64()">+</button>
+										</div>
+										<div id="option64">
+											<input type="checkbox" id="checkopcao64">
+											<input class="opcao-pergunta" type="text" id="opcao64" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao6">
+										<input class="add-questao" onclick="exibirquestao7()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo7">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 7:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao7" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="checkbox" id="checkopcao71">
+											<input class="opcao-pergunta" type="text" id="opcao71" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption72()">+</button>
+										</div>
+										<div id="option72">
+											<input type="checkbox" id="checkopcao72">
+											<input class="opcao-pergunta" type="text" id="opcao72" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption73()">+</button>
+										</div>
+										<div id="option73">
+											<input type="checkbox" id="checkopcao73">
+											<input class="opcao-pergunta" type="text" id="opcao73" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption74()">+</button>
+										</div>
+										<div id="option74">
+											<input type="checkbox" id="checkopcao74">
+											<input class="opcao-pergunta" type="text" id="opcao74" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao7">
+										<input class="add-questao" onclick="exibirquestao8()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo8">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 8:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao8" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="checkbox" id="checkopcao81">
+											<input class="opcao-pergunta" type="text" id="opcao81" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption82()">+</button>
+										</div>
+										<div id="option82">
+											<input type="checkbox" id="checkopcao82">
+											<input class="opcao-pergunta" type="text" id="opcao82" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption83()">+</button>
+										</div>
+										<div id="option83">
+											<input type="checkbox" id="checkopcao83">
+											<input class="opcao-pergunta" type="text" id="opcao83" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption84()">+</button>
+										</div>
+										<div id="option84">
+											<input type="checkbox" id="checkopcao84">
+											<input class="opcao-pergunta" type="text" id="opcao84" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao8">
+										<input class="add-questao" onclick="exibirquestao9()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo9">
+								<div class="row-itens">
+									<div class="col-md-2">
+											<span class="titulo-pergunta">Pergunta 9:</span>
+									</div>
+									<div class="col-md-10">
+											<input class="input-pergunta" type="text" id="questao9" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="checkbox" id="checkopcao91">
+											<input class="opcao-pergunta" type="text" id="opcao91" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption92()">+</button>
+										</div>
+										<div id="option92">
+											<input type="checkbox" id="checkopcao92">
+											<input class="opcao-pergunta" type="text" id="opcao92" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption93()">+</button>
+										</div>
+										<div id="option93">
+											<input type="checkbox" id="checkopcao93">
+											<input class="opcao-pergunta" type="text" id="opcao93" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption94()">+</button>
+										</div>
+										<div id="option94">
+											<input type="checkbox" id="checkopcao94">
+											<input class="opcao-pergunta" type="text" id="opcao94" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+								<div class="container-questao" id="container-questao9">
+										<input class="add-questao" onclick="exibirquestao10()" type="button" name="" value= "Adicionar Pergunta"> 
+								</div>
+							</div>
+							<div id="divconteudo10">
+								<div class="row-itens">
+									<div class="col-md-3">
+											<span class="titulo-pergunta">Pergunta 10:</span>
+									</div>
+									<div class="col-md-9">
+											<input class="input-pergunta" type="text" id="questao10" value= "">
+									</div>
+								</div>
+								<div class="row-itens">
+									<div class="col-md-10">
+										<div class="option1">
+											<input type="checkbox" id="checkopcao101">
+											<input class="opcao-pergunta" type="text" id="opcao101" value= "Opção 1">
+											<button class="btn-opcao" onclick="exibiroption102()">+</button>
+										</div>
+										<div id="option102">
+											<input type="checkbox" id="checkopcao102">
+											<input class="opcao-pergunta" type="text" id="opcao102" value= "Opção 2">
+											<button class="btn-opcao" onclick="exibiroption103()">+</button>
+										</div>
+										<div id="option103">
+											<input type="checkbox" id="checkopcao103">
+											<input class="opcao-pergunta" type="text" id="opcao103" value= "Opção 3">
+											<button class="btn-opcao" onclick="exibiroption104()">+</button>
+										</div>
+										<div id="option104">
+											<input type="checkbox" id="checkopcao104">
+											<input class="opcao-pergunta" type="text" id="opcao104" value= "Opção 4">
+										</div>
+									</div>
+								</div>
+							</div>							
+						</div>
+						<div class="row-feed">
+							<div class="col-md-4">
+								<a href="http://localhost:8080/incluir-vaga">
+									<input class="botaoredefinir" type="button" onclick="createPagina()" value="Salvar">
+								</a>
+								<!--<button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>-->
+							</div>
+							<div class="col-md-4">
+								<input class="botaovisualizar" type="button" onclick="visualizar()" value="Visualizar">
+								<!--<button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>-->
+							</div>
+							<div class="col-md-4">
+								<!--<form action="/logoff" method="post">  -->
+								<a href="http://localhost:8080/minhas-paginas">
+									<input class="botaovoltar" type="button" value="Voltar">
+								</a>
+								<!--</form>-->
+							</div>
+						</div>
+					</div>
+				</div>
+        	</div> <!--FIM FEED-->
+		</div>
+        <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO--></div>
+    </div>
+    	
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+	
+	var visibilidade = true; //Variável que vai manipular o botão Exibir/ocultar
+ 
+//	document.getElementById("dvConteudo").style.display = "none";
+	document.getElementById("divconteudo2").style.display = "none";
+	document.getElementById("divconteudo3").style.display = "none";
+	document.getElementById("divconteudo4").style.display = "none";
+	document.getElementById("divconteudo5").style.display = "none";
+	document.getElementById("divconteudo6").style.display = "none";
+	document.getElementById("divconteudo7").style.display = "none";
+	document.getElementById("divconteudo8").style.display = "none";
+	document.getElementById("divconteudo9").style.display = "none";
+	document.getElementById("divconteudo10").style.display = "none";
+
+	document.getElementById("option2").style.display = "none";
+	document.getElementById("option3").style.display = "none";
+	document.getElementById("option4").style.display = "none";
+
+	document.getElementById("option22").style.display = "none";
+	document.getElementById("option23").style.display = "none";
+	document.getElementById("option24").style.display = "none";
+
+	document.getElementById("option32").style.display = "none";
+	document.getElementById("option33").style.display = "none";
+	document.getElementById("option34").style.display = "none";
+
+	document.getElementById("option42").style.display = "none";
+	document.getElementById("option43").style.display = "none";
+	document.getElementById("option44").style.display = "none";
+
+	document.getElementById("option52").style.display = "none";
+	document.getElementById("option53").style.display = "none";
+	document.getElementById("option54").style.display = "none";
+
+	document.getElementById("option62").style.display = "none";
+	document.getElementById("option63").style.display = "none";
+	document.getElementById("option64").style.display = "none";
+
+	document.getElementById("option72").style.display = "none";
+	document.getElementById("option73").style.display = "none";
+	document.getElementById("option74").style.display = "none";
+
+	document.getElementById("option82").style.display = "none";
+	document.getElementById("option83").style.display = "none";
+	document.getElementById("option84").style.display = "none";
+
+	document.getElementById("option92").style.display = "none";
+	document.getElementById("option93").style.display = "none";
+	document.getElementById("option94").style.display = "none";
+
+	document.getElementById("option102").style.display = "none";
+	document.getElementById("option103").style.display = "none";
+	document.getElementById("option104").style.display = "none";
+    
+	/*function exibir() {
+        document.getElementById("dvConteudo").style.display = "block";
+    }
+	function exibir1(){
+		document.getElementById("dvConteudo1").style.display = "block";
+	}*/
+	function exibiroption2(){
+		document.getElementById("option2").style.display = "block";
+	}
+	function exibiroption3(){
+		document.getElementById("option3").style.display = "block";
+	}
+	function exibiroption4(){
+		document.getElementById("option4").style.display = "block";
+	}
+
+
+	function exibirquestao2(){
+		document.getElementById("divconteudo2").style.display = "block";
+		document.getElementById("container-questao1").style.display = "none";
+	}
+	function exibiroption22(){
+		document.getElementById("option22").style.display = "block";
+	}
+	function exibiroption23(){
+		document.getElementById("option23").style.display = "block";
+	}
+	function exibiroption24(){
+		document.getElementById("option24").style.display = "block";
+	}
+
+
+	function exibirquestao3(){
+		document.getElementById("divconteudo3").style.display = "block";
+		document.getElementById("container-questao2").style.display = "none";
+	}
+	function exibiroption32(){
+		document.getElementById("option32").style.display = "block";
+	}
+	function exibiroption33(){
+		document.getElementById("option33").style.display = "block";
+	}
+	function exibiroption34(){
+		document.getElementById("option34").style.display = "block";
+	}
+	
+	
+	function exibirquestao4(){
+		document.getElementById("divconteudo4").style.display = "block";
+		document.getElementById("container-questao3").style.display = "none";
+	}
+	function exibiroption42(){
+		document.getElementById("option42").style.display = "block";
+	}
+	function exibiroption43(){
+		document.getElementById("option43").style.display = "block";
+	}
+	function exibiroption44(){
+		document.getElementById("option44").style.display = "block";
+	}
+
+	function exibirquestao5(){
+		document.getElementById("divconteudo5").style.display = "block";
+		document.getElementById("container-questao4").style.display = "none";
+	}
+	function exibiroption52(){
+		document.getElementById("option52").style.display = "block";
+	}
+	function exibiroption53(){
+		document.getElementById("option53").style.display = "block";
+	}
+	function exibiroption54(){
+		document.getElementById("option54").style.display = "block";
+	}
+
+	function exibirquestao6(){
+		document.getElementById("divconteudo6").style.display = "block";
+		document.getElementById("container-questao5").style.display = "none";
+	}
+	function exibiroption62(){
+		document.getElementById("option62").style.display = "block";
+	}
+	function exibiroption63(){
+		document.getElementById("option63").style.display = "block";
+	}
+	function exibiroption64(){
+		document.getElementById("option64").style.display = "block";
+	}
+
+	function exibirquestao7(){
+		document.getElementById("divconteudo7").style.display = "block";
+		document.getElementById("container-questao6").style.display = "none";
+	}
+	function exibiroption72(){
+		document.getElementById("option72").style.display = "block";
+	}
+	function exibiroption73(){
+		document.getElementById("option73").style.display = "block";
+	}
+	function exibiroption74(){
+		document.getElementById("option74").style.display = "block";
+	}
+
+	function exibirquestao8(){
+		document.getElementById("divconteudo8").style.display = "block";
+		document.getElementById("container-questao7").style.display = "none";
+	}
+	function exibiroption82(){
+		document.getElementById("option82").style.display = "block";
+	}
+	function exibiroption83(){
+		document.getElementById("option83").style.display = "block";
+	}
+	function exibiroption84(){
+		document.getElementById("option84").style.display = "block";
+	}
+	
+	function exibirquestao9(){
+		document.getElementById("divconteudo9").style.display = "block";
+		document.getElementById("container-questao8").style.display = "none";
+	}
+	function exibiroption92(){
+		document.getElementById("option92").style.display = "block";
+	}
+	function exibiroption93(){
+		document.getElementById("option93").style.display = "block";
+	}
+	function exibiroption94(){
+		document.getElementById("option94").style.display = "block";
+	}
+
+	function exibirquestao10(){
+		document.getElementById("divconteudo10").style.display = "block";
+		document.getElementById("container-questao9").style.display = "none";
+	}
+	function exibiroption102(){
+		document.getElementById("option102").style.display = "block";
+	}
+	function exibiroption103(){
+		document.getElementById("option103").style.display = "block";
+	}
+	function exibiroption104(){
+		document.getElementById("option104").style.display = "block";
+	}
+
+</script>
+
+</body>
+</html>

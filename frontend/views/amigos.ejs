@@ -1,33 +1,97 @@
 <!doctype html>
 <head>
     <%- include('./partials/head'); %>
-    <title>Meus amigos</title>
+    <title>Minhas Páginas</title>
     <link rel="stylesheet" type="text/css" href="/static/feed.css">
+    <link rel="stylesheet" type="text/css" href="/static/minhas_paginas.css">
 </head>
 <body>
 	<%- include('./partials/menu'); %>
     <div class="body-feed">
         <div class="row-feed">
             <div class="col-md-3-side-left"> <!--INICIO MENU ESQUERDO-->
-                <%- include('./partials/user_area'); %>
-            </div> <!--FIM MENU ESQUERDO-->
-            
-            <div class="col-md-6-feed"> <!--INICIO FEED--> 
-                <div class="head-feed">
-                    <div class="feed-updates-zone">
+                
+            </div><!--FIM MENU ESQUERDO-->
+            <div class="col-md-6-feed"> <!--INICIO FEED-->
+              <div class="head-feed">
+                    <div class="pages-updates-zone">
                         <%- include('./partials/search'); %>
-                        <%- include('./partials/requests'); %> 
-                        <%- include('./partials/recommendations-friends'); %>
+                        <p class="titulo-pagina">Minha Rede</p>
+                    <div class="tipo-pagina-li">
+                        <ul class="tipo-pagina" id="amigos">
+                            
+                           
+                            
+                        </ul>
                     </div>
-                </div>
+                       </div>
+              </div>
             </div> <!--FIM FEED-->
-            
             <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO-->
-                <%- include('./partials/friends_zone'); %>  
-            </div>
+             
+            </div><!--FIM MENU DIREITO-->
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function verAmigos(listItem) {
+        console.log(listItem);
+    }
+
+
+    axios.get("https://social-backend-tcc.herokuapp.com/users").then(response => {
+        var amigos = response.data;
+        var list = document.getElementById("amigos");
+        var idUser = localStorage.getItem("id");
+        
+        amigos.forEach(amigos =>{
+            
+            var item = document.createElement("li");
+//<img src="static/img/perfil1.png" class="img-profile" type="button">
+            item.setAttribute("data-id", amigos.id);
+            item.setAttribute("data-title", amigos.username);
+            item.setAttribute("data-city", amigos.city);
+            item.setAttribute("data-uf", amigos.uf);
+
+           
+
+            item.innerHTML = amigos.username + "<br> " + amigos.city + "-" +amigos.uf;
+
+            var visitarbtn = document.createElement("button");
+            visitarbtn.innerHTML = "Visitar";
+            visitarbtn.addEventListener("click", function() {
+                
+                verAmigos(item);
+                window.location.href = "http://localhost:8080/ver-perfil/"+ amigos.id
+               /* var id = paginas.id;
+                //console.log (id);
+                axios.get("http://localhost:4000/pagina", id).then(response => {
+                   
+                    window.location.href = "http://localhost:8080/feed-noticias"
+                }).catch(error =>{
+                    console.log(error);
+                })*/
+            });
+
+            item.appendChild(visitarbtn);
+
+            list.appendChild(item);
+        
+        });
+        /* 
+        var user = response.data;
+        var p = document.getElementById('nomeUser');
+        p.innerHTML = user.nome;
+        console.log("menu" + user);
+        */
+
+
+
+    }).catch(error =>{
+        console.log(error);
+    })
+</script>
 </body>
 </html>

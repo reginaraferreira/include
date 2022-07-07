@@ -52,14 +52,14 @@ function createUser(){
 
 
         var user = {
-            nome: usernameInput.value,
-            sobrenome: sobrenomeInput.value,
+            username: usernameInput.value,
+            last_name: sobrenomeInput.value,
             email: emailInput.value,
-            senha: passwordInput.value,
-            estado:  estadoInput.value,
-            cidade: cidadeInput.value,
+            password: passwordInput.value,
+            uf:  estadoInput.value,
+            city: cidadeInput.value,
         }
-        axios.post("http://localhost:4000/cadastro", user)
+        axios.post("https://social-backend-tcc.herokuapp.com/auth/register/", user)
         
         .then(response => {
             

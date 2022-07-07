@@ -1,3 +1,5 @@
+/************************CREATE PUBLICAÇÕES*****************************/
+
 .publication{
 	background-color: #F0F0F0;
 	border-radius: 10px;
@@ -55,3 +57,5 @@ input.publish{
 .button-publication{
 	display: inline-block;
 }
+
+/************************FIM CREATE PUBLICAÇÕES*****************************/

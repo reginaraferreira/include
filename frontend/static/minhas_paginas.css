@@ -51,11 +51,6 @@
     text-align: center;
 }
 
-
-ul.tipo-pagina {
-    margin-left: 40px;
-}
-
 .tipo-pagina li {
     margin-top: 20px;
     margin-left: 20px;
@@ -106,4 +101,79 @@ ul.tipo-pagina {
     background: #fff;
     padding: 20px;
     border-radius: 15px;
+}
+
+.feed-vagas h5 {
+    padding-top: 25px;
+    padding-left: 35px;
+}
+
+.tipo-vaga li {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    list-style: none;
+    background-color: #fff;
+    width: 25%;
+    height: 100px;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+	font-weight: 600;
+}
+
+.tipo-vaga button {
+    width: 90px;
+    height: 31px;
+    margin-top: 15px;
+    border-radius: 15px;
+    border-style: none;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+    background: #4285F4;
+    color: #fff;
+}
+
+.dados-vaga {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	padding: 50px;
+}
+
+p#titleVaga {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 20px;
+	text-align: center;
+}
+
+.dados-vaga p {
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+input.btnCandidatos{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	margin-top: 20px;
+    width: 200px;
+    height: 30px;
+    background-color: #4285F4;
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    border: none;
+}
+
+.candidatos p {
+    text-align: center;
+    font-style: italic;
+}
+
+.candidatos {
+    border-top: 1px dotted #C4C4C4;
+    padding-bottom: 20px;
 }

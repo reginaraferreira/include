@@ -2,65 +2,71 @@
     <link rel="stylesheet" type="text/css" href="/static/right_menu.css">
 </head>
 <div class="friends-zone">
-    <h5>Amigos</h5>
-    <div class="row">
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil10.png" class="img-friends">
-                <p>João Paulo</p>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil2.png" class="img-friends">
-                <p>Aline Pereira</p>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil3.png" class="img-friends">
-                <p>Enzo Paulo</p>
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil4.png" class="img-friends">
-                <p>Guilherme de Freitas</p>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil5.png" class="img-friends">
-                <p>Rafaella Ferreira</p>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil6.png" class="img-friends">
-                <p>Anya Ramos</p>
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil7.png" class="img-friends">
-                <p>Ariane Garcia</p>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil8.png" class="img-friends">
-                <p>Felipe Lisboa</p>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.google.com">
-                <img src="/static/img/perfil9.png" class="img-friends">
-                <p>Antony Silva</p>
-            </a>
-        </div>
+    <h5>Minha Rede</h5>
+    <div class="tipo-pagina-li">
+        <ul class="col-md-4" id="amigos">
+            
+           
+            
+        </ul>
     </div>
 </div>
+<script>
+    function verAmigos(listItem) {
+        console.log(listItem);
+    }
+
+
+    axios.get("https://social-backend-tcc.herokuapp.com/users").then(response => {
+        var amigos = response.data;
+        var list = document.getElementById("amigos");
+        var idUser = localStorage.getItem("id");
+        
+        amigos.forEach(amigos =>{
+            
+            var item = document.createElement("li");
+//<img src="static/img/perfil1.png" class="img-profile" type="button">
+            item.setAttribute("data-id", amigos.id);
+            item.setAttribute("data-title", amigos.username);
+            item.setAttribute("data-city", amigos.city);
+            item.setAttribute("data-uf", amigos.uf);
+
+           
+
+            item.innerHTML = amigos.username + "<br> " + amigos.city + "-" +amigos.uf;
+
+            var visitarbtn = document.createElement("button");
+            visitarbtn.innerHTML = "Visitar";
+            visitarbtn.addEventListener("click", function() {
+                
+                verAmigos(item);
+                window.location.href = "http://localhost:8080/ver-perfil/"+ amigos.id
+               /* var id = paginas.id;
+                //console.log (id);
+                axios.get("http://localhost:4000/pagina", id).then(response => {
+                   
+                    window.location.href = "http://localhost:8080/feed-noticias"
+                }).catch(error =>{
+                    console.log(error);
+                })*/
+            });
+
+            item.appendChild(visitarbtn);
+
+            list.appendChild(item);
+        
+        });
+        /* 
+        var user = response.data;
+        var p = document.getElementById('nomeUser');
+        p.innerHTML = user.nome;
+        console.log("menu" + user);
+        */
+
+
+
+    }).catch(error =>{
+        console.log(error);
+    })
+
+</script>   
