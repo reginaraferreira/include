@@ -1,0 +1,119 @@
+<!doctype html>
+<head>
+    <%- include('./partials/head'); %>
+    <title>Cadastrar Questionário</title>
+	<link rel="stylesheet" type="text/css" href="/static/feed.css">
+    <link rel="stylesheet" type="text/css" href="/static/criar-formulario.css">
+</head>
+<body>
+	<%- include('./partials/menu'); %>
+    <div class="body-feed">
+    	<div class="row-feed">
+        	<div class="col-md-3-side-left"> <!--INICIO MENU ESQUERDO-->
+				<p class="nome-forms-menu">Questionário</p>
+            </div><!--FIM MENU ESQUERDO-->
+           	<div class="col-md-6-feed"> <!--INICIO FEED-->
+				<div class="head-feed">
+					<div class="form-zone">
+						<div class="area-cadastro">
+							<div class="info-basica-page">
+								<div class="row">
+									<div class="col-md-12">
+								</div>
+							</div>
+							</div>
+							<div class="menu-info-basica">
+								<div class="row-itens">
+									
+								</div>
+								
+								<div id="divconteudo1">
+									<div class="row-itens">
+										<div class="col-md-2">
+												<span class="titulo-pergunta">Pergunta 1:</span>
+										</div>
+										<div class="col-md-10">
+												
+										</div>
+									</div>
+									<div class="row-itens">
+										<div class="tipo-pagina-li">
+											<p id="question"></p>
+											
+											<p id="answer"></p>
+											
+										</div>
+									</div>
+									<div class="container-questao" id="container-questao1">
+											<input class="add-questao" onclick="exibirquestao2()" type="button" name="" value= "Próxima Pergunta"> 
+									</div>
+								</div>
+								
+							</div>		
+						</div>
+						<div class="row-feed" id="feed-botoes">
+							<div class="col-md-2"></div>
+							<div class="col-md-4">
+									<input class="botaoredefinir" type="button" onclick="enviarRespostas()" value="Salvar">
+								<!--<button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>-->
+							</div>
+							<div class="col-md-4">
+								<!--<form action="/logoff" method="post">  -->
+								<a href="http://localhost:8080/minhas-paginas">
+									<input class="botaovoltar" type="button" value="Voltar">
+								</a>
+								<!--</form>-->
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+					</div>
+				</div>
+        	</div> <!--FIM FEED-->
+		</div>
+        <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO--></div>
+    </div>
+    	
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+	var visibilidade = true; //Variável que vai manipular o botão Exibir/ocultar
+ 
+
+	//	document.getElementById("feed-botoes").style.display = "none";
+
+	axios.get('https://social-backend-tcc.herokuapp.com/quiz/31').then(response => {
+		var text = response.data;	
+		var question = 	text.question;
+		
+		var cont = question.length
+
+			question.forEach(question =>{
+				var questionId = question.id;
+				var questionText = question.text;
+				 
+				console.log("question " + questionId + ": " + questionText + " tamanhoArray: ");
+
+			})
+
+			var teste = question.data;
+			console.log("teste" + teste)
+			
+		
+
+		
+		
+	}).catch(err =>{
+		console.log(err);
+	})
+
+	
+
+	function enviarRespostas(){
+		
+		
+
+	}
+</script>
+
+</body>
+</html>

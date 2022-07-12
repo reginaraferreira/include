@@ -16,15 +16,13 @@
               <div class="head-feed">
                     <div class="pages-updates-zone">
                         <%- include('./partials/search'); %>
-                        <p class="titulo-pagina">Minha Rede</p>
-                    <div class="tipo-pagina-li">
-                        <ul class="tipo-pagina" id="amigos">
-                            
-                           
-                            
-                        </ul>
+                        <div class="painel-vagas">
+                            <p class="titulo-pagina">Minha Rede</p>
+                            <div class="tipo-pagina-li">
+                                <ul class="tipo-pagina" id="amigos"></ul>
+                            </div>
+                        </div>
                     </div>
-                       </div>
               </div>
             </div> <!--FIM FEED-->
             <div class="col-md-3-side-right"> <!--INICIO MENU DIREITO-->
@@ -42,12 +40,13 @@
 
 
     axios.get("https://social-backend-tcc.herokuapp.com/users").then(response => {
+        
         var amigos = response.data;
         var list = document.getElementById("amigos");
         var idUser = localStorage.getItem("id");
         
         amigos.forEach(amigos =>{
-            
+            if (amigos.id != idUser){
             var item = document.createElement("li");
 //<img src="static/img/perfil1.png" class="img-profile" type="button">
             item.setAttribute("data-id", amigos.id);
@@ -78,7 +77,7 @@
             item.appendChild(visitarbtn);
 
             list.appendChild(item);
-        
+        }
         });
         /* 
         var user = response.data;

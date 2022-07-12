@@ -62,7 +62,7 @@
                                 <p>Para participar desse vaga você precisa responder a um quiz.</p>
                                 <p>As perguntas desse quiz possuem relação com a vaga ofertada.</p>
                                 <p>Está preparado?</p>
-                                <input class="btnCandidatos" type="button" value= "Quero participar"> 
+                                <input class="btnCandidatos" type="button" onclick="concorrerVaga()" value= "Quero participar"> 
                             </div>
 
                            
@@ -110,6 +110,14 @@
 		document.getElementById("divCandidar").style.display = "block";
 		document.getElementById("ocultarBtn").style.display = "none";
 	}
+
+
+    function concorrerVaga(){
+        window.location.href = "http://localhost:8080/concorrer-vaga"
+        
+    }
+
+
 </script>
 </body>
 </html>

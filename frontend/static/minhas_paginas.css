@@ -2,7 +2,12 @@
 	background-color: #F0F0F0;
 	border-radius: 10px;
 	margin-top:15px;
-	height:600px;
+	height:auto;
+}
+
+.painel-vagas {
+    padding-top: 75px;
+    padding-bottom: 25px;
 }
 
 .titulo-pagina {
@@ -116,7 +121,7 @@
     list-style: none;
     background-color: #fff;
     width: 25%;
-    height: 100px;
+    height: auto;
     border-radius: 15px;
     padding: 10px;
     text-align: center;
@@ -176,4 +181,19 @@ input.btnCandidatos{
 .candidatos {
     border-top: 1px dotted #C4C4C4;
     padding-bottom: 20px;
+}
+
+.botaovoltar{
+    background-color: #D62A76;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 30px;
+    border-radius: 30PX;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
 }

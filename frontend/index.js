@@ -29,9 +29,17 @@ app.use(cors());
 
 
 io.on('connection',(socket) => { //socket é uma instância do cliente que esta conectado na aplicação
-    socket.on("publicacao", (data) => {
-        io.emit("respublicacao", data);
+
+    socket.on("msg", (data) => {
+        io.emit("retornoMsg", data)
+        console.log(data);
     })
+
+    socket.on("msgUser", (data) => {
+        io.emit("retornoMsgUser", data)
+        console.log(data);
+    })
+
 });
 
 app.get('/', function(req, res){
@@ -100,6 +108,10 @@ app.get('/ver-vaga/:id', function(req, res){
 app.get('/ver-vaga-user/:id', function(req, res){
     const id = req.params.id
     res.render('ver-vaga-user', {idVaga:id});
+});
+
+app.get('/concorrer-vaga', function(req, res){
+    res.render('concorrer-vaga');
 });
 
 app.post("/upload", upload.single("fileImage"), function(req, res){

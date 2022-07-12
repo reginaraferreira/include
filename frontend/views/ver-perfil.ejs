@@ -28,8 +28,16 @@
                         <span id="cidadeUser"></span>
                         <span id="estadoUser"></span>
                     </div>
-                    
-                    <div class="recommendation-area-perfil">
+                    <div class="feed-updates-zone" id="feedNoticias">
+                            <div class="dados-user-publicacao">
+                                <span class="dados-user" id="nomeUserPublic"></span>
+                                <span class="dados-user" id="sobrenomeUserPublic"></span>
+                                <div id="chat" class="chat"></div>
+                                <div id="chatsalvo" class="chat">
+                                    <ul class="tipo-pagina" id="publications"></ul>
+                                </div>     
+                    </div>
+                  <!--  <div class="recommendation-area-perfil">
                         <p class="title-perfil-text">Recomendações</p>
                         <div class="recommendation-one-perfil">
                             <img src="/static/img/perfil11.png" class="img-recommendation-perfil">
@@ -42,6 +50,7 @@
                             <p class="info-competence-text">“É um otimo colega de trabalho. Sabe trabalhar em grupo e ajuda nas tarefas.”</p><br/>
                         </div>
                     </div>
+                    -->
                 </div>
               </div>
             </div> <!--FIM FEED-->
@@ -54,6 +63,7 @@
     </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <script>
     var id= '<%=idUser%>';
     
@@ -63,6 +73,7 @@
     //axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id)
     
     axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
+        
         var user = response.data;
         // escolaridadeUser
          //b = (typeof b !== 'undefined') ? b : 1;
@@ -78,9 +89,65 @@
         p.innerHTML = user.schooling;
         
     
-    }).catch(err =>{
-        console.log(err);
+    
+
+
+
+    function verPublicacoes(listItem) {
+        console.log(listItem);
+    }
+
+    axios.get("https://social-backend-tcc.herokuapp.com/publications/").then(response => {
+        var publications = response.data;
+        var usernameUser = localStorage.getItem("username");
+        var list = document.getElementById("publications");
+
+        
+        publications.forEach(publications =>{
+            if (publications.user_name == user.username){
+            var item = document.createElement("li");
+
+            var data = new Date(publications.created_date);
+            let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes(); 
+
+            item.setAttribute("data-id", publications.id);
+            item.setAttribute("data-userName", publications.user_name);
+            item.setAttribute("data-userLastName", publications.user_last_name);
+            item.setAttribute("data-msg", publications.text);
+            item.setAttribute("data-data", dataFormatada);
+
+        
+
+         /*   var id = publications.user;
+            var username = axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
+                var user = response.data;
+                var username = user.username;
+                var lastName = user.last_name;
+                localStorage.setItem("username", username);
+                localStorage.setItem("lastName", lastName);
+            
+            }).catch(err =>{
+                console.log(err);
+            })
+
+            var username = localStorage.getItem("username");
+            var lastName = localStorage.getItem("lastName");*/
+
+            
+            
+            item.innerHTML = publications.user_name + " " + publications.user_last_name +" diz: " + "</br>" + dataFormatada + "</br>" + publications.text ;
+           
+
+            list.appendChild(item);
+        }
+        });
+    }).catch(error =>{
+        console.log(error);
     })
+
+}).catch(err =>{
+    console.log(err);
+})
 
 </script>
 </body>

@@ -19,7 +19,7 @@
                 <div class="publication">
                     <input class="create-publication" type="text" id="create-text" placeholder="Criar publicação">
                     <div class="icons-publication">
-                        <a href="http://www.google.com" class="icon-foto">
+                      <!--  <a href="http://www.google.com" class="icon-foto">
                             <img src="/static/img/fotos.png"><p>Fotos</p>
                         </a>
                         <a href="http://www.google.com" class="icon-foto">
@@ -31,6 +31,7 @@
                         <a href="http://www.google.com" class="icon-foto">
                         <img src="/static/img/localizacao.png"><p>Localização</p>
                         </a>
+                    -->
                         <input class="publish" type="button" onclick="publicar()" value="Publicar">
                     </div>
                 </div>
@@ -41,15 +42,18 @@
                             <span class="dados-user" id="nomeUserPublic"></span>
                             <span class="dados-user" id="sobrenomeUserPublic"></span>
                         
-                            <p id="chat" class="chat"></p>
-                            <div class="dados-fake">
-                            <p> Reginara Ferreira diz:</p>
-                            <p> Tem vaga nova disponivel. Confira na area de vagas! </p>
+                            <div id="chat" class="chat">
+                                
                             </div>
-                            <div class="dados-fake">
-                                <p> Reginara Ferreira diz:</p>
-                                <p> Bem vindo a nossa rede social! </p>
+                            <div id="chatsalvo" class="chat">
+                                <ul class="tipo-pagina" id="publications">
+                            
+                                       
+                                        
+                                </ul>
                             </div>
+
+                            
                     </div>
               </div>
             </div> <!--FIM FEED-->
@@ -65,45 +69,98 @@
 
     var socket = io('http://localhost:8080');
 
-
-    socket.on("mensagem", (data) => {
-        var feedNoticias = document.getElementById("feedNoticias");
-        var p = document.createElement("p");
-        p.innerHTML = data;
-        feedNoticias.append(p);
-    });
-
-    socket.on("respublicacao", (data) => {
+    
+    socket.on("retornoMsg", (data) =>{
+        console.log(data);
         var chat = document.getElementById("chat");
         var p = document.createElement("p");
-        p.innerHTML = data;
+        p.innerHTML = data.username + " " + data.lastName + " diz:" + "<br>"+  data.msg;
         chat.append(p);
 
-    });
+        var post = {
+			text: data.msg,
+			user: data.id
+		}
+		axios.post("https://social-backend-tcc.herokuapp.com/publication/", post)
+		
+		.then(response => {
+			
+			console.log("SUCESSO")
+			
+		}).catch(err => {
+			console.log(err);
+		});
 
-    function publicar(){        
-        var id = localStorage.getItem("id");
-
-    axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
-        var user = response.data;
-        var userC = document.getElementById('nomeUserPublic');
-        userC.innerHTML = user.username + " ";
-        var span = document.getElementById('sobrenomeUserPublic');
-        span.innerHTML = user.last_name + " diz: ";
-       // console.log(response.data);
-
-    }).catch(err =>{
-        console.log(err);
     })
 
-        var create_text = document.getElementById ("create-text");
+    function publicar(){
 
-        var mensagem = create_text.value;
-        socket.emit("publicacao", mensagem);
+        var id = localStorage.getItem("id");
+
+        axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
+            var user = response.data;
+            var username = user.username;
+            var lastName = user.last_name;
+            var idUser = user.id;
+
+            var msgField = document.getElementById("create-text");
+            var msg = msgField.value;
+        
+            socket.emit("msg", {msg:msg, id:idUser, username:username, lastName:lastName});
+    
+        }).catch(err =>{
+            console.log(err);
+        })
     }
 
 
+    function verPublicacoes(listItem) {
+        console.log(listItem);
+    }
 
+    axios.get("https://social-backend-tcc.herokuapp.com/publications/").then(response => {
+        var publications = response.data;
+        var list = document.getElementById("publications");
+        
+        publications.forEach(publications =>{
+            var item = document.createElement("li");
+
+            var data = new Date(publications.created_date);
+            let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes(); 
+
+            item.setAttribute("data-id", publications.id);
+            item.setAttribute("data-userName", publications.user_name);
+            item.setAttribute("data-userLastName", publications.user_last_name);
+            item.setAttribute("data-msg", publications.text);
+            item.setAttribute("data-data", dataFormatada);
+
+        
+
+         /*   var id = publications.user;
+            var username = axios.get('https://social-backend-tcc.herokuapp.com/user/'+ id).then(response => {
+                var user = response.data;
+                var username = user.username;
+                var lastName = user.last_name;
+                localStorage.setItem("username", username);
+                localStorage.setItem("lastName", lastName);
+            
+            }).catch(err =>{
+                console.log(err);
+            })
+
+            var username = localStorage.getItem("username");
+            var lastName = localStorage.getItem("lastName");*/
+
+            
+            
+            item.innerHTML = publications.user_name + " " + publications.user_last_name +" diz: " + "</br>" + dataFormatada + "</br>" + publications.text ;
+           
+
+            list.appendChild(item);
+        });
+    }).catch(error =>{
+        console.log(error);
+    })
 </script>
 </body>
 </html>

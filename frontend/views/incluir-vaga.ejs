@@ -127,7 +127,6 @@
 		var idPage = localStorage.getItem("Page");
 		var idquiz = localStorage.getItem("idQuiz");
 	
-	    console.log(idPage);
 	
 		var vaga = {
 			title: tituloInput.value,
@@ -136,12 +135,10 @@
 			benefits: beneficiosInput.value,
 			salary: salarioInput.value,
 			page: idPage,
-			quiz: true
+			quiz: idquiz
 		}
-		axios.post("https://social-backend-tcc.herokuapp.com/vacancy/", vaga)
-		
-		.then(response => {
-			
+		axios.post("https://social-backend-tcc.herokuapp.com/vacancy/", vaga).then(response => {
+			console.log("idPage");
 			window.location.href = "http://localhost:8080/minhas-paginas"
 			
 		}).catch(err => {

@@ -46,10 +46,6 @@
 	text-align: center;
 }
 
-.dados-user-publicacao{
-	padding: 15px;
-}
-
 #nomeUserPerfil, #sobrenomeUserPerfil{
 	text-transform: uppercase;
 	font-weight: bold;
@@ -76,12 +72,37 @@
 	margin-top:50px;
 }
 
-.dados-fake {
-    margin-top: 15px;
-    /* border-top-color: currentcolor; */
-    border-top: 1px solid #C4C4C4;
-    padding-top: 10px;
+/****
+.dados-user-publicacao{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 90%;
+	padding: 15px;
 }
+
+.dados-user-publicacao li{
+	background-color: #fff;
+	border-radius: 10px;
+} */
+
+.chat{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 90%;
+	padding: 15px;
+}
+
+
+.chat p, li {
+	list-style: none;
+    background-color: #fff;
+	border-radius: 10px;
+	margin-top: 15px;
+	padding: 10px;
+}
+
 /*------------FIM AREA DO USUARIO -----------*/
 
 /************************CREATE PUBLICAÇÕES*****************************/

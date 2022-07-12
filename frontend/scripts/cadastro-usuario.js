@@ -58,6 +58,9 @@ function createUser(){
             password: passwordInput.value,
             uf:  estadoInput.value,
             city: cidadeInput.value,
+            is_verified: true,
+            is_active: true,
+            is_staff: true
         }
         axios.post("https://social-backend-tcc.herokuapp.com/auth/register/", user)
         

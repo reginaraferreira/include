@@ -102,7 +102,42 @@
 											<input class="add-questao" onclick="exibirquestao3()" type="button" name="" value= "Adicionar Pergunta"> 
 									</div>
 								</div>
-								
+								<div id="divconteudo3">
+									<div class="row-itens">
+										<div class="col-md-2">
+												<span class="titulo-pergunta">Pergunta 3:</span>
+										</div>
+										<div class="col-md-10">
+												<input class="input-pergunta" type="text" id="questao3" value= "">
+										</div>
+									</div>
+									<div class="row-itens">
+										<div class="col-md-10">
+											<div class="option1">
+												<input type="radio" id="checkopcao31" name="questao3">
+												<input class="opcao-pergunta" type="text" id="opcao31" value= "Opção 1">
+												<button class="btn-opcao" onclick="exibiroption32()">+</button>
+											</div>
+											<div id="option32">
+												<input type="radio" id="checkopcao32" name="questao3">
+												<input class="opcao-pergunta" type="text" id="opcao32" value= "Opção 2">
+												<button class="btn-opcao" onclick="exibiroption33()">+</button>
+											</div>
+											<div id="option33">
+												<input type="radio" id="checkopcao33" name="questao3">
+												<input class="opcao-pergunta" type="text" id="opcao33" value= "Opção 3">
+												<button class="btn-opcao" onclick="exibiroption34()">+</button>
+											</div>
+											<div id="option34">
+												<input type="radio" id="checkopcao33" name="questao3">
+												<input class="opcao-pergunta" type="text" id="opcao34" value= "Opção 4">
+											</div>
+										</div>
+									</div>
+									<div class="container-questao" id="container-questao3">
+											<input class="add-questao" onclick="exibirquestao4()" type="button" name="" value= "Adicionar Pergunta"> 
+									</div>
+								</div>
 
 
 
@@ -111,9 +146,7 @@
 						<div class="row-feed">
 							<div class="col-md-2"></div>
 							<div class="col-md-4">
-								<a href="http://localhost:8080/incluir-vaga">
 									<input class="botaoredefinir" type="button" onclick="criarFormulario()" value="Salvar">
-								</a>
 								<!--<button class="botaocriarconta" type="button" onclick="createUser()">Criar Conta</button>-->
 							</div>
 							<div class="col-md-4">
@@ -135,6 +168,65 @@
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script>
+	var visibilidade = true; //Variável que vai manipular o botão Exibir/ocultar
+ 
+	//	document.getElementById("dvConteudo").style.display = "none";
+		document.getElementById("divconteudo2").style.display = "none";
+		document.getElementById("divconteudo3").style.display = "none";
+		document.getElementById("divconteudo4").style.display = "none";
+
+		document.getElementById("option2").style.display = "none";
+		document.getElementById("option3").style.display = "none";
+		document.getElementById("option4").style.display = "none";
+	
+		document.getElementById("option22").style.display = "none";
+		document.getElementById("option23").style.display = "none";
+		document.getElementById("option24").style.display = "none";
+	
+		document.getElementById("option32").style.display = "none";
+		document.getElementById("option33").style.display = "none";
+		document.getElementById("option34").style.display = "none";
+
+	function exibiroption2(){
+		document.getElementById("option2").style.display = "block";
+	}
+	function exibiroption3(){
+		document.getElementById("option3").style.display = "block";
+	}
+	function exibiroption4(){
+		document.getElementById("option4").style.display = "block";
+	}
+
+
+	function exibirquestao2(){
+		document.getElementById("divconteudo2").style.display = "block";
+		document.getElementById("container-questao1").style.display = "none";
+	}
+	function exibiroption22(){
+		document.getElementById("option22").style.display = "block";
+	}
+	function exibiroption23(){
+		document.getElementById("option23").style.display = "block";
+	}
+	function exibiroption24(){
+		document.getElementById("option24").style.display = "block";
+	}
+
+
+	function exibirquestao3(){
+		document.getElementById("divconteudo3").style.display = "block";
+		document.getElementById("container-questao2").style.display = "none";
+	}
+	function exibiroption32(){
+		document.getElementById("option32").style.display = "block";
+	}
+	function exibiroption33(){
+		document.getElementById("option33").style.display = "block";
+	}
+	function exibiroption34(){
+		document.getElementById("option34").style.display = "block";
+	}
+
 	function criarFormulario(){
 		var questao1 = document.getElementById("questao1");
 		var opcao1 = document.getElementById("opcao1");
@@ -148,7 +240,12 @@
 		var opcao23 = document.getElementById("opcao23");
 		var opcao24 = document.getElementById("opcao24");
 
-		var i = 0;
+		var questao3 = document.getElementById("questao3");
+		var opcao31 = document.getElementById("opcao31");
+		var opcao32 = document.getElementById("opcao32");
+		var opcao33 = document.getElementById("opcao33");
+		var opcao34 = document.getElementById("opcao34");
+
 
 		var quiz = {
 			question: [
@@ -197,23 +294,44 @@
 				text: questao2.value
 				}
 			],
+			question: [
+				{
+				answer: [
+					{
+						text: opcao31.value,
+						is_true: true
+					},
+					{
+						text: opcao32.value,
+						is_true: false
+					},
+					{
+						text: opcao33.value,
+						is_true: false
+					},
+					{
+						text: opcao34.value,
+						is_true: false
+					}
+				],
+				text: questao3.value
+				}
+			],
 		text: "quizteste"
 		}
 		axios.post("https://social-backend-tcc.herokuapp.com/quiz/", quiz)
 		.then(response => {
 			var quiz = response.data;
+			console.log(quiz.id);
 			localStorage.setItem("idQuiz", quiz.id);
+			window.location.href = "http://localhost:8080/incluir-vaga"
 		
-			console.log("SUCESSO");
+			
 			
 		}).catch(err => {
 			console.log(err);
 		});
-
-		
 }
-		var quiz = 7//response.data;
-		localStorage.setItem("idQuiz", quiz);
 </script>
 
 </body>

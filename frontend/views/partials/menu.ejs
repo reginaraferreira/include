@@ -67,6 +67,7 @@
         var user = response.data;
         var p = document.getElementById('nomeUser');
         p.innerHTML = user.username;
+        localStorage.setItem("username", user.username);
        // console.log(response.data);
 
     }).catch(err =>{
@@ -77,6 +78,7 @@
         localStorage.removeItem('token');
         localStorage.removeItem('id');
         localStorage.removeItem('Page');
+        localStorage.removeItem('idQuiz');
         window.location.href = "http://localhost:8080/"
     }
 </script>
